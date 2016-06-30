@@ -9,7 +9,7 @@ int drawMyCar(int nXpos,int nYpos,int nColor)
 	ix = 0;
 
 	for(iy = 0;iy <= 2;iy++) {
-		for(ix = 0;ix <= 6;ix++) {
+		for(ix = 0;ix <= 8;ix++) {
 		gotoxy(ix+nXpos+3,iy+nYpos);
 		printf(" ");
 		}
@@ -17,12 +17,31 @@ int drawMyCar(int nXpos,int nYpos,int nColor)
 	}
 
 	for(iy = 0;iy <= 1;iy++) {
-		for(ix = 0;ix <= 12;ix++) {
+		for(ix = 0;ix <= 14;ix++) {
 		gotoxy(ix+nXpos,iy+nYpos+2);
 		printf(" ");
 		}
 			
 	}
+
+	setColor(30,47);
+	for(iy = 0;iy <= 1;iy++) {
+		for(ix = 0;ix <= 2;ix++) {
+		gotoxy(ix+nXpos+3,iy+nYpos+3);
+		printf(" ");
+		}
+			
+	}
+
+	setColor(30,47);
+	for(iy = 0;iy <= 1;iy++) {
+		for(ix = 0;ix <= 2;ix++) {
+		gotoxy(ix+nXpos+9,iy+nYpos+3);
+		printf(" ");
+		}
+			
+	}
+
 	setColor(0,0);
 }
 
