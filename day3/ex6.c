@@ -41,7 +41,7 @@ int main()
 		}
 		system("clear");
 		//주인공출력
-		drawMyBox(xpos,ypos,41,1);
+		drawMyBox(xpos,ypos,44,1);
 		//몸AI
 		if(orc_xpos > xpos) {
 			orc_xpos -= 1;
