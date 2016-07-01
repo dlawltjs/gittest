@@ -7,7 +7,8 @@ int drawMyCar(int nXpos,int nYpos,int nColor)
 	
 	setColor(30,nColor);
 	ix = 0;
-
+	
+	//자동차상단
 	for(iy = 0;iy <= 2;iy++) {
 		for(ix = 0;ix <= 8;ix++) {
 		gotoxy(ix+nXpos+3,iy+nYpos);
@@ -15,7 +16,8 @@ int drawMyCar(int nXpos,int nYpos,int nColor)
 		}
 			
 	}
-
+	
+	//자동차하단
 	for(iy = 0;iy <= 1;iy++) {
 		for(ix = 0;ix <= 14;ix++) {
 		gotoxy(ix+nXpos,iy+nYpos+2);
@@ -23,7 +25,8 @@ int drawMyCar(int nXpos,int nYpos,int nColor)
 		}
 			
 	}
-
+	
+	//왼쪽바퀴
 	setColor(30,47);
 	for(iy = 0;iy <= 1;iy++) {
 		for(ix = 0;ix <= 2;ix++) {
@@ -33,7 +36,7 @@ int drawMyCar(int nXpos,int nYpos,int nColor)
 			
 	}
 
-	setColor(30,47);
+	//오른쪽바퀴
 	for(iy = 0;iy <= 1;iy++) {
 		for(ix = 0;ix <= 2;ix++) {
 		gotoxy(ix+nXpos+9,iy+nYpos+3);
