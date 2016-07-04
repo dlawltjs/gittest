@@ -7,7 +7,7 @@ int main()
 	char buffer[64];
 	char *pbuffer = buffer;
 	int nTailIndex = 0;
-
+	int num;
 
 	for(int i=0;i<64;i++){
 		*(pbuffer+i)=0;
@@ -36,9 +36,10 @@ int main()
 			case 'f':	//앞에서부터지우기
 				for(int i=0;i<nTailIndex-1;i++){
 					*(pbuffer+i) = *(pbuffer+i+1);
+					num = i;
 				}
 				nTailIndex--;
-				pbuffer[nTailIndex] = 0x00;
+				*(pbuffer+num+1) = 0x00;
 				break;
 
 			case 's':
