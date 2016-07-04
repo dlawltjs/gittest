@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include<stdio.h>
 
 int main()
 {
@@ -8,51 +8,52 @@ int main()
 	char *pbuffer = buffer;
 	int nTailIndex = 0;
 
-	for(int i=0;i<64;i++) {
-		buffer[i] = 0;
+
+	for(int i=0;i<64;i++){
+		*(pbuffer+i)=0;
 	}
 
-	bLoop = 1;
-	while(bLoop) {
+	bLoop=1;
 
+	while(bLoop){
 		scanf("%c",&cmd);
 		getchar();
 
-		switch(cmd) {
-			case 'a': //add
-			printf("what : ");
-			scanf("%c",&cmd);
-			getchar();
-			*pbuffer = cmd;
-			pbuffer++;
-			break;
+		switch(cmd){
+			case 'a':	//add
+				printf("what :");
+				scanf("%c",&cmd);
+				getchar();
+				pbuffer[nTailIndex] = cmd;
+				nTailIndex++;
+				break;
 
-			case 'd':
-			pbuffer--;
-			*pbuffer = 0x00;
-			break;
+			case 'd':	//delete
+				nTailIndex--;
+				pbuffer[nTailIndex] = 0x00;	
+				break;
 
-			case 'f': //앞에서부터 지우기
-			for(int i=0;i<sizeof(buffer);i++) {
-				*pbuffer = *(pbuffer+4);
-			}
-			pbuffer--;
-			*pbuffer = 0x00;	
-
-			break;
+			case 'f':	//앞에서부터지우기
+				for(int i=0;i<nTailIndex-1;i++){
+					*(pbuffer+i) = *(pbuffer+i+1);
+				}
+				nTailIndex--;
+				pbuffer[nTailIndex] = 0x00;
+				break;
 
 			case 's':
-			printf("%s \r\n",buffer);
-			break;
+				printf("%s\r\n",pbuffer);
+				break;
 			
 			case 'q':
-			printf("quit \r\n");
-			bLoop = 0;
-			break;
-			 
-
+				printf("quit\r\n");
+				bLoop=0;
+				break;
 		}
-
 	}
 
+	return 0;
+
+
+	return 0;
 }
