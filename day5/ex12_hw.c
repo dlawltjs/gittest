@@ -5,6 +5,7 @@ int main()
 	char cmd;
 	int bLoop;
 	char buffer[64];
+	char *pbuffer = buffer;
 	int nTailIndex = 0;
 
 	for(int i=0;i<64;i++) {
@@ -22,21 +23,21 @@ int main()
 			printf("what : ");
 			scanf("%c",&cmd);
 			getchar();
-			buffer[nTailIndex] = cmd;
-			nTailIndex++;
+			*pbuffer = cmd;
+			pbuffer++;
 			break;
 
 			case 'd':
-			nTailIndex--;
-			buffer[nTailIndex] = 0x00;
+			pbuffer--;
+			*pbuffer = 0x00;
 			break;
 
 			case 'f': //앞에서부터 지우기
-			for(int i=0;i<nTailIndex-1;i++) {
-				buffer[i] = buffer[i+1];
+			for(int i=0;i<sizeof(buffer);i++) {
+				*pbuffer = *(pbuffer+4);
 			}
-			nTailIndex--;
-			buffer[nTailIndex] = 0x00;	
+			pbuffer--;
+			*pbuffer = 0x00;	
 
 			break;
 
