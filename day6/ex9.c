@@ -10,8 +10,9 @@ int main()
 	//div 8,2
 	
 	char strcmd[128];
-
-	scanf("%s",strcmd);
+	
+	gets(strcmd);
+	//scanf("%s",strcmd);
 
 	char *ptrTemp;
 	char *pcmd;
@@ -26,7 +27,6 @@ int main()
 	
 	if(strcmp(pcmd,"add") == 0) {
 		printf("덧셈 : %d \r\n",a+b);
-
 	}
 	else if( strcmp(pcmd,"sub") == 0) {
 		printf("뺄셈 : %d \r\n",a-b);
