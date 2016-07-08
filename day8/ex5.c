@@ -19,6 +19,8 @@ int main()
 
 	strcpy(pPlayer->m_szName,"aria stak");
 	
+	printf("%d %s \r\n",pPlayer->m_nHp,pPlayer->m_szName);	
+	
 	free(pPlayer); 
 
 	return 0;
