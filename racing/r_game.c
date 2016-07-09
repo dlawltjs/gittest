@@ -46,7 +46,7 @@ void rg_PlayGame(double delta_tick)
 				if(ch == 'q') {
 					bLoop = 0;
 				}
-				else if(ch == 'a') {
+				else if(ch == 'a') { 
 					car_posx -= 1;
 				}
 				else if(ch == 'd') {
