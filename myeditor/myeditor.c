@@ -19,7 +19,7 @@ void me_delete();
 void me_pop();
 void me_ins(); //
 void me_rm(); //
-void me_set(); // 
+void me_set(); //
 void me_readfile();
 void me_writefile();
 
@@ -87,6 +87,8 @@ void _me_push(char *szText)
 	_S_STR_LINE *pLine = (_S_STR_LINE *)malloc(sizeof(_S_STR_LINE));
 	pLine->m_szStr = pstr;
 	pLine->m_pNext = NULL;
+	
+		
 	if(pHeader == NULL) {
 		pHeader = pLine;
 	}
@@ -146,6 +148,35 @@ void me_pop()
 
 void me_ins()
 {
+	
+	char *pstr = (char *)malloc(strlen(szText)+1);
+	strcpy(pstr,szText);
+
+	_S_STR_LINE *pLine = (_S_STR_LINE *)malloc(sizeof(_S_STR_LINE));
+	pLine->m_szStr = pstr;
+	pLine->m_pNext = NULL;
+	
+	if(pHeader == NULL) {
+		pHeader = pLine;
+	}
+	else {
+		//끝까지 찾아 들어가기	
+		_S_STR_LINE *pNext = (_S_STR_LINE *)pHeader;
+
+
+		while(pNext != NULL){
+			//마지막이라면...
+			if(pNext->m_pNext == NULL) {
+				pNext->m_pNext = pLine;
+				pNext = NULL;
+			}
+			else {//더있다면...
+				pNext = pNext->m_pNext;
+			}
+		}
+	}
+
+
 
 }
 
