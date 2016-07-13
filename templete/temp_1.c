@@ -31,8 +31,10 @@ int main()
 		//실시간입력	
 		if(kbhit() != 0) {
 			char ch = getch();
-			if(ch == 'q') bLoop = 0;
-			puts("bye~\r");
+			if(ch == 'q') {
+				bLoop = 0;
+				puts("bye~\r");
+			}
 		}
 
 		//타이밍계산
