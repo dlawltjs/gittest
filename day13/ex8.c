@@ -30,6 +30,7 @@ int main()
 		map_init(&gScreenBuf[i]);
 		map_new(&gScreenBuf[i],35,16);
 	
+	
 	}
 
 	map_init(&gPlayer);
