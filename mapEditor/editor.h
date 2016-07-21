@@ -11,5 +11,7 @@ void mapeditor_vline();
 void mapeditor_save();
 void mapeditor_load();
 void mapeditor_dump2();
+void mapeditor_draw_cross();
+void mapeditor_tridraw();
 
 #endif

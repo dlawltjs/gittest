@@ -37,6 +37,12 @@ int main(int argc,char *argv[])
 		else if(!strcmp(pTemp,"vline")) {
 			mapeditor_vline();
 		}
+		else if(!strcmp(pTemp,"tridraw")) {
+			mapeditor_vline();
+		}			
+		else if(!strcmp(pTemp,"draw_cross")) {
+			mapeditor_vline();
+		}
 		else if(!strcmp(pTemp,"save")) {
 			mapeditor_save();
 		}

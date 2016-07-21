@@ -109,6 +109,41 @@ void mapeditor_vline()
 
 }
 
+void mapeditor_tridraw()
+{
+	//tridraw
+	int tile_index;
+	int nHeight = MapObject.m_header.m_nHeight;
+	int nWidth = MapObject.m_header.m_nWidth;
+
+	tile_index = atoi(strtok(NULL," "));
+
+	for(int y=0;y<nHeight;y++) {
+		for(int x=0;(x<y) && (x<nWidth);x++) {
+			MapObject.m_pBuf[y*nWidth + x] = tile_index;
+		}
+	}
+}
+
+void mapeditor_draw_cross()
+{
+	//draw_cross 1 2 1
+	int xpos,ypos,tile_index;
+
+	xpos = atoi(strtok(NULL," "));
+	ypos = atoi(strtok(NULL," "));
+	tile_index = atoi(strtok(NULL," "));
+
+	for(int iy=ypos-1;iy<ypos+2;iy++) {			
+		MapObject.m_pBuf[iy*MapObject.m_header.m_nWidth + xpos ] = tile_index;	
+
+	}
+	for(int ix=xpos-1;ix<xpos+2;ix++) {
+		MapObject.m_pBuf[ypos*MapObject.m_header.m_nWidth + ix ] = tile_index;	
+	}
+
+}
+
 void mapeditor_save()
 {
 	//save filename
