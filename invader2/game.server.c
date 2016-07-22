@@ -188,7 +188,10 @@ int main(int argc,char *argv[])
 	{
 		puts("err create socket");
 	}
-	server.sin_addr.s_addr = inet_addr("127.0.0.1");
+	
+	//server.sin_addr.s_addr = inet_addr("127.0.0.1");
+	server.sin_addr.s_addr = inet_addr("192.168.0.26");
+
 	server.sin_family = AF_INET;
 	server.sin_port = htons(8080);
 	if(connect(socket_desc,(struct sockaddr *)&server,sizeof(server)) < 0) {
