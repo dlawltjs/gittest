@@ -6,9 +6,9 @@ gcc ../engine/engine2d.c ../mapEditor/map.c alien.c bullet.c plane.c game.c -o g
 ![screen shot](https://raw.githubusercontent.com/dlawltjs/gittest/master/invader2/game.png)
 
 
-#How to operate?
+##How to operate?
 
-a : left
+a : left 
 d : right
 w : up
 s : down
