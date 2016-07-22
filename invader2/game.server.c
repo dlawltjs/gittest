@@ -384,12 +384,12 @@ int main(int argc,char *argv[])
 					gBulletObjects[i].m_nFSM = 0;
 					gPlayerObject[0].m_nFSM = 0;
 
-/*										
+										
 					setColor(37,41);
 					printf("\n                        game over                           ");
 					setColor(37,40);
 					gotoxy(0,0);
-*/
+
 				}
 				
 				if(dist2 < 0.25) {
