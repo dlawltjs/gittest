@@ -3,5 +3,5 @@
 gcc ../engine/engine2d.c ../mapEditor/map.c alien.c bullet.c plane.c game.c -o game.exe
 
 
-![screen shot](https://raw.githubusercontent.com/dlawltjs/gittest/master/test/game.png)
+![screen shot](https://raw.githubusercontent.com/dlawltjs/gittest/master/invader2/game.png)
 
