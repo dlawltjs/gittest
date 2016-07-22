@@ -8,4 +8,8 @@ gcc ../engine/engine2d.c ../mapEditor/map.c alien.c bullet.c plane.c game.c -o g
 
 #How to operate?
 
-left:a / right:d / up:w / down:s / shoot:j 
+a : left
+d : right
+w : up
+s : down
+j : shoot
