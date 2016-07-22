@@ -31,8 +31,15 @@ int gnPlayerIndex;
 _S_MAP_OBJECT gScreenBuf[2];
 
 _S_MAP_OBJECT gPlayerModel;
+_S_MAP_OBJECT gPlasmaModel;
+_S_MAP_OBJECT gAlienModel;
+_S_MAP_OBJECT gMissileModel;
 
 _S_Plane gPlayerObject[2];
+_S_BULLET_OBJECT gBulletObjects[32];
+_S_ALIEN_OBJECT gAlienObjects[8];
+_S_BULLET_OBJECT gMissileObject[32];
+
 
 typedef struct _S_PACKET_RECV_POSITIONS {
 	unsigned short header; //0
@@ -185,6 +192,42 @@ int main(int argc,char *argv[])
 	Plane_init(&gPlayerObject[1],&gPlayerModel,0,0);
 	gPlayerObject[1].m_nFSM = 1;
 
+	map_init(&gPlasmaModel);
+	map_load(&gPlasmaModel,"plasma.dat");
+
+	map_init(&gAlienModel);
+	map_load(&gAlienModel,"alien.dat");
+
+	map_init(&gMissileModel);
+	map_load(&gMissileModel,"bullet1.dat");
+
+	Plane_init(&gPlayerObject,&gPlayerModel,30,20);
+
+	for(int i=0;i<sizeof(gMissileObject)/sizeof(_S_BULLET_OBJECT);i++)
+	{
+		bullet_init(&gMissileObject[i],0,0,0,&gMissileModel);
+	}
+
+	for(int i=0;i<10;i++) 
+	{
+		bullet_init(&gBulletObjects[i],0,0,0,&gPlasmaModel);
+	}
+
+	double TablePosition[] = {0,8.0,16.0,24.0};
+
+	for(int i=0;i<4;i++)
+	{
+		_S_ALIEN_OBJECT *pObj = &gAlienObjects[i];
+		alien_init(pObj,&gAlienModel);
+		pObj->m_fXpos = TablePosition[i];
+		pObj->m_fYpos = 2;
+		pObj->m_nFSM = 1;
+		gAlienObjects[i].m_pBullet = &gBulletObjects[i];
+
+	}
+
+
+
 	puts("object setup ok!");
 	sleep(1);
 
@@ -192,6 +235,7 @@ int main(int argc,char *argv[])
 
 	set_conio_terminal_mode();
 	acc_tick=last_tick=0;
+	acc_guid_delay_tick = 0;
 
 	while(bLoop) {
 		//타이밍처리 
@@ -209,7 +253,24 @@ int main(int argc,char *argv[])
 			
 			gPlayerObject[0].pfDraw(&gPlayerObject[0],&gScreenBuf[1]);
 			gPlayerObject[1].pfDraw(&gPlayerObject[1],&gScreenBuf[1]);
-		
+				for(int i=0;i<4;i++ ) 
+			{
+				_S_ALIEN_OBJECT *pObj = &gAlienObjects[i];
+				pObj->pfDraw(pObj,&gScreenBuf[1]);
+			}
+
+
+			for(int i=0;i<10;i++) {
+				gBulletObjects[i].pfDraw(&gBulletObjects[i],&gScreenBuf[1]);
+			}
+
+			for(int i=0;i<sizeof(gMissileObject)/sizeof(_S_BULLET_OBJECT);i++)
+			{
+				_S_BULLET_OBJECT *pObj = &gMissileObject[i];
+				pObj->pfDraw(pObj,&gScreenBuf[1]);
+			}
+
+	
 			map_dump(&gScreenBuf[1],Default_Tilepalete);
 			acc_tick = 0;
 		}

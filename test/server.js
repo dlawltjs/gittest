@@ -6,8 +6,8 @@ const net = require('net');
 const PORT = 8080;
 
 let object_list = [{
-    x : 0,
-    y : 0
+    x : 30,
+    y : 20
 }];
 
 let sockets = [];
